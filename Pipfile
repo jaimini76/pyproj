@@ -15,7 +15,8 @@ pylint = "*"
 
 [packages]
 requests = "*"
-selenium = "*"
+selenium = "==3.141"
+msedge-selenium-tools = "*"
 
 [requires]
 python_version = "3.6"
