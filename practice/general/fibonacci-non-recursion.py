@@ -1,45 +1,45 @@
-def fibonacci(n):
-
-    # list to store fibonacci
-    l=[]
-
-    if n < 0:
-        print("Negative values not supportred.")
-        return l
-    elif n == 0:
-        l.append(0)
-        return l
-    elif n == 1:
-        l.append(0)
-        l.append(1)
-        return l
+def fibonacci_rec(num: int):
+    if num <= 1:
+        return num
     else:
-        l.append(0)
-        l.append(1)
-        i=2
-        j=0
-        while j <= n:
-            fib_num = l[i-1] + l[i-2]
-            l.append(fib_num)
-            j = fib_num
+        return fibonacci_rec(num - 1) + fibonacci_rec(num - 2)
+
+
+cache = {0: 0, 1: 1}
+
+
+def fibonacci(num: int):
+    if num <= 1:
+        return cache[num]
+    else:
+        if num in cache.keys():
+            return cache[num]
+        else:
+            cache[num] = cache[num - 1] + cache[num - 2]
+            return cache[num]
+
+
+def fibonacci_1(num: int):
+    if num <= 1:
+        return num
+    else:
+        a, b = 0, 1
+        i = 0
+        while i < num - 1:
+            b, a = a + b, b
             i += 1
-        return l
-
-arr =  fibonacci(4)
-
-print(f"arr = {arr}")
+        return b
 
 
-#def fibonacci(n):
+for i in range(7):
+    number = fibonacci_rec(i)
+    print("num = ", number)
 
-#i = 2
-#l = []
-#l.add(0)
-#l.add(1)
-#j = 0
-#While j <= N:
-#	 X = l[i-1]) +l[i-2]
-#	 l.add(x)
-#	J = x
+for i in range(7):
+    number = fibonacci(i)
+    print("num = ", number)
 
+for i in range(7):
+    number = fibonacci_1(i)
+    print("num = ", number)
 

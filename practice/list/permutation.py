@@ -1,5 +1,7 @@
 # https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/
 import logging
+import  itertools as it
+from typing import List
 
 def permutation(start, end):
 
@@ -16,10 +18,16 @@ def permutation(start, end):
         l[start], l[i] = l[i], l[start]
 
 
+def permutation_1(string_list: List[str]):
+    for combination in it.permutations(string_list):
+        print(combination)
+
+
 logging.getLogger().setLevel(logging.INFO)
 
-l=['a', 'b', 'c']
-start = 0
-end = len(l) - 1
-permutation(start, end)
+l = ['a', 'b', 'c']
+#start = 0
+#end = len(l) - 1
+#permutation(start, end)
+permutation_1(l)
 
